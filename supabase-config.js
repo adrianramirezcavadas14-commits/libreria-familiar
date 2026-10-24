@@ -1,7 +1,2 @@
-// Sustituye únicamente los dos valores cuando conectemos la base de datos.
-// La clave pública anon/publishable puede usarse en el navegador con políticas RLS correctas.
-// NUNCA pongas aquí la service_role ni la contraseña de la base de datos.
-window.LIBRERIA_SUPABASE = {
-  url: "",
-  anonKey: ""
-};
+// Usa únicamente la Project URL y la publishable key. Nunca pongas aquí la secret/service_role.
+window.LIBRERIA_SUPABASE={url:"https://ravnuggmkypkrcfgfeip.supabase.co",publishableKey:"sb_publishable_IFbVLHoh3msnxsrtUAPQ4A_Mxb5apyp"};
