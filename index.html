@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#243047">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Librohogar">
+  <title>Nuestra biblioteca familiar</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <button class="menu-button" id="openMenu" aria-label="Abrir menú" aria-controls="drawer" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="brand">
+      <div class="book-logo" aria-hidden="true">📚</div>
+      <div><h1>Nuestra biblioteca familiar</h1><small>Los libros de casa, siempre localizados</small></div>
+    </div>
+    <div class="sync-status" id="syncStatus">Preparado</div>
+  </header>
+
+  <div class="drawer-backdrop" id="drawer" aria-hidden="true">
+    <aside class="drawer-panel" aria-label="Menú principal">
+      <div class="drawer-heading"><h2>¿Qué hacemos?</h2><button id="closeMenu" class="close-button" aria-label="Cerrar menú">×</button></div>
+      <nav id="mainNav">
+        <button class="nav-button" data-page="add"><span>➕</span><span><b>Sumar un libro</b><small>Una nueva historia para la familia</small></span></button>
+        <button class="nav-button active" data-page="search"><span>🔎</span><span><b>Explorar la biblioteca</b><small>Encuentra cualquier libro en un momento</small></span></button>
+        <button class="nav-button" data-page="recommend"><span>🎲</span><span><b>¿Qué leemos hoy?</b><small>Deja que la biblioteca te sorprenda</small></span></button>
+        <button class="nav-button" data-page="wishlist"><span>✨</span><span><b>Libros soñados</b><small>Ideas para comprar o regalar</small></span></button>
+        <button class="nav-button" data-page="ratings"><span>⭐</span><span><b>Valorar libros</b><small>Puntúa y recuerda tus lecturas</small></span></button>
+        <button class="nav-button" data-page="calendar"><span>📅</span><span><b>Calendario de lecturas</b><small>Los libros leídos a lo largo del tiempo</small></span></button>
+        <button class="nav-button" data-page="pending"><span>📖</span><span><b>Pendientes de leer</b><small>Las próximas historias de la lista</small></span></button>
+        <button class="nav-button" data-page="stats"><span>🏆</span><span><b>El rincón de los números</b><small>Curiosidades de nuestra biblioteca</small></span></button>
+      </nav>
+    </aside>
+  </div>
+
+  <main class="wrap">
+    <section class="page active" id="search">
+      <div class="hero"><div><h2>¿Qué buscamos hoy?</h2><p>Busca por título, autor o ISBN y encuentra el libro en un momento.</p></div><div class="count" id="bookCount">0 libros</div></div>
+      <div class="search-box"><input id="searchInput" type="search" placeholder="🔎  Escribe un título, autor o ISBN…" autocomplete="off"><button id="clearSearch" aria-label="Limpiar búsqueda">×</button></div>
+      <div class="empty-card"><div class="empty-icon">📚</div><h3>La biblioteca está preparada</h3><p>Todavía no hay libros guardados. Cuando conectemos el alta con Supabase, aparecerán aquí.</p><button class="primary go-page" data-target="add">➕ Sumar el primer libro</button></div>
+    </section>
+
+    <section class="page" id="add"><div class="hero"><div><h2>Sumar un libro</h2><p>Más adelante podrás escanear su ISBN o completar los datos manualmente.</p></div></div><div class="placeholder-card"><span>➕</span><h3>Alta de libros</h3><p>Pantalla preparada para construir el formulario y la búsqueda en Open Library y Google Books.</p></div></section>
+    <section class="page" id="recommend"><div class="hero"><div><h2>¿Qué leemos hoy?</h2><p>Una recomendación elegida entre los libros disponibles en casa.</p></div></div><div class="placeholder-card"><span>🎲</span><h3>Recomendador</h3><p>Esta función se añadirá cuando ya haya libros en la colección.</p></div></section>
+    <section class="page" id="wishlist"><div class="hero"><div><h2>Libros soñados</h2><p>Las listas de deseos de toda la familia.</p></div></div><div class="placeholder-card"><span>✨</span><h3>Wishlist familiar</h3><p>Aquí aparecerán los libros que queréis comprar o recibir como regalo.</p></div></section>
+    <section class="page" id="ratings"><div class="hero"><div><h2>Valorar libros</h2><p>Guarda puntuaciones y opiniones sobre vuestras lecturas.</p></div></div><div class="placeholder-card"><span>⭐</span><h3>Valoraciones</h3><p>Esta pantalla está preparada para las valoraciones de cada integrante.</p></div></section>
+    <section class="page" id="calendar"><div class="hero"><div><h2>Calendario de lecturas</h2><p>Consulta qué libros se han leído y cuándo.</p></div></div><div class="placeholder-card"><span>📅</span><h3>Historial de lectura</h3><p>Aquí construiremos el calendario mensual de libros terminados.</p></div></section>
+    <section class="page" id="pending"><div class="hero"><div><h2>Pendientes de leer</h2><p>Organiza los libros que esperan su turno.</p></div></div><div class="placeholder-card"><span>📖</span><h3>Próximas lecturas</h3><p>Aquí podréis añadir y ordenar los libros pendientes.</p></div></section>
+    <section class="page" id="stats"><div class="hero"><div><h2>El rincón de los números</h2><p>Una mirada alegre a las lecturas de toda la familia.</p></div></div><div class="placeholder-card"><span>🏆</span><h3>Estadísticas</h3><p>La sección se activará cuando tengamos información suficiente.</p></div></section>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="./supabase-config.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
